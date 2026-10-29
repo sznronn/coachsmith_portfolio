@@ -1,0 +1,91 @@
+/* ==========================================================================
+   Emily Carter — Strength Coach · Stylesheet
+   1. Tokens  2. Base  3. Layout  4. Typography  5. Components  6. Sections
+   7. Responsive  8. Motion
+   ========================================================================== */
+
+/* 1. Tokens */
+:root{
+  --ink:#111111; --panel:#242424; --paper:#f5f5f0; --sand:#eaeae3;
+  --lime:#c6f135; --olive:#647819; --muted:#55564f; --muted-dark:#d3d3cc;
+  --font-display:'Anton','DM Sans',sans-serif; --font-body:'DM Sans',sans-serif;
+}
+
+/* 2. Base */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;font-family:var(--font-body);color:var(--ink);background:var(--paper)}
+img{max-width:100%}
+:focus-visible{outline:3px solid var(--lime);outline-offset:4px}
+.skip-link{position:absolute;left:-999px;top:0;background:var(--lime);color:var(--ink);padding:12px 18px;z-index:100;font-weight:700}
+.skip-link:focus{left:0}
+
+/* 3. Layout */
+.app-wrap{width:100%;overflow:hidden}
+.shell{width:100%;max-width:1440px;margin-inline:auto;padding-inline:clamp(20px,5vw,80px)}
+.section-pad{padding-block:clamp(76px,9vw,132px)}
+
+/* Colour contexts: sections set the theme, children inherit */
+.theme-dark{background:var(--ink);color:var(--paper)}
+.theme-panel{background:var(--panel);color:var(--paper)}
+.theme-sand{background:var(--sand)}
+.muted{color:var(--muted)}
+.theme-dark .muted,.theme-panel .muted{color:var(--muted-dark)}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--olive)}
+.theme-dark .eyebrow,.theme-panel .eyebrow,.eyebrow.lime{color:var(--lime)}
+
+/* 4. Typography */
+.display{font-family:var(--font-display);font-weight:400;line-height:.96;letter-spacing:.01em;text-transform:uppercase}
+.section-heading{font-size:clamp(48px,6.5vw,100px)}
+.hero-heading{font-size:clamp(76px,11vw,178px)}
+.card-title{font-size:30px}
+
+/* 5. Components */
+.photo{display:block;width:100%;height:100%;object-fit:cover}
+.photo-frame{overflow:hidden;background:#353535}
+.tag{position:absolute;background:var(--lime);color:var(--ink);padding:8px 12px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.button-link{display:inline-flex;min-height:52px;align-items:center;justify-content:center;gap:13px;padding:14px 23px;text-decoration:none;font-weight:800;text-transform:uppercase;letter-spacing:.045em;font-size:12px;transition:transform .25s}
+.button-link:hover{transform:translateY(-4px)}
+.btn-lime{background:var(--lime);color:var(--ink)}
+.btn-outline{border:1px solid rgba(255,255,255,.5);color:var(--paper)}
+.nav-link{font-size:13px;font-weight:700;letter-spacing:.065em;text-transform:uppercase;text-decoration:none;white-space:nowrap;color:var(--paper)}
+.nav-link:hover,.nav-link.accent{color:var(--lime)}
+.text-link{color:var(--olive);text-decoration:underline;text-underline-offset:4px}
+.theme-dark .text-link,.theme-panel .text-link,.text-link.lime{color:var(--lime)}
+.arrow-btn{width:48px;height:48px;border:1px solid rgba(0,0,0,.4);background:transparent;cursor:pointer;font-size:18px;transition:background .2s;color:inherit}
+.arrow-btn:hover{background:var(--lime);color:var(--ink)}
+.theme-dark .arrow-btn{border-color:rgba(255,255,255,.5)}
+.carousel-slide[hidden]{display:none!important}
+.quote-card{margin:0;background:#fff}
+.service{background:#fff;transition:transform .25s}
+.service.dark{background:var(--panel);color:var(--paper)}
+.service img{transition:transform .6s}
+.service:hover{transform:translateY(-4px)}
+.service:hover img{transform:scale(1.04)}
+.field{width:100%;padding:12px;background:transparent;border:1px solid rgba(255,255,255,.3);color:#fff;outline:none;font:inherit}
+.field:focus{border-color:var(--lime)}
+
+/* 6. Sections */
+.gallery-grid{display:grid;grid-template-columns:1.1fr .9fr 1fr;grid-template-rows:220px 220px;gap:12px}
+.gallery-grid figure{position:relative}
+.gallery-grid figure:first-child{grid-row:span 2}
+.gallery-grid figure:last-child{grid-column:span 2}
+.gallery-grid figcaption{position:absolute;left:12px;bottom:12px;background:var(--ink);color:var(--paper);padding:8px 12px;font-size:12px}
+
+/* 7. Responsive */
+@media(max-width:1100px){.desktop-nav{display:none!important}}
+@media(min-width:1101px){.mobile-toggle,.mobile-nav{display:none!important}}
+@media(max-width:767px){
+  .hero-heading{font-size:clamp(67px,16vw,112px)}
+  .hero-visual{min-height:410px}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,170px)}
+  .section-pad{padding-block:72px}
+}
+
+/* 8. Motion */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .reveal{opacity:1;transform:none}
+}

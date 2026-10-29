@@ -1,11 +1,11 @@
-/* Emily Carter — Strength Coach · Behaviour
+/* Coach Smith — Strength Coach · Behaviour
    Modules: mobile menu, carousels, scroll reveal, consultation form */
 (function () {
   'use strict';
 
   /* ---- Config: replace with your real details ---- */
   const CONFIG = {
-    contactEmail: 'hello@emilycartercoaching.com',
+    contactEmail: 'hello@coachsmithcoaching.com',
     // Optional: paste a Formspree/Getform/Netlify endpoint to POST the form instead of opening email
     formEndpoint: ''
   };
